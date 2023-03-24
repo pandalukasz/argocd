@@ -3,26 +3,29 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: backend
-  name: backend
+    app: frontend
+  name: frontend
   namespace: result
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: frontend
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: backend
+        app: frontend
     spec:
       containers:
-      - image: 192.168.44.44:8082/docker-local/backend:latest
-        name: backend
+      - image: 192.168.44.44:8082/docker-local/frontend:latest
+        name: frontend
         ports:
-        - containerPort: 5001
+        - containerPort: 5000
+        env:
+        - name: BACKEND_URL
+          value: "http://backend-service:5001"
         resources: {}
       imagePullSecrets:
       - name: regcred
