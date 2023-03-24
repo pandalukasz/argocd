@@ -5,7 +5,7 @@ metadata:
   labels:
     app: backend
   name: backend
-  namespace: result
+  namespace: default
 spec:
   replicas: 1
   selector:
